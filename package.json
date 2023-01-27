@@ -109,6 +109,7 @@
     "react": "^16.10.2",
     "react-dom": "^16.9.0"
   },
+  "private": true,
   "publishConfig": {
     "access": "restricted",
     "registry": "https://npm.pkg.github.com"
