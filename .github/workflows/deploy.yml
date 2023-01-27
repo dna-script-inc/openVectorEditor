@@ -37,30 +37,32 @@ jobs:
       - uses: JS-DevTools/npm-publish@v1
         if: steps.check.outputs.changed == 'true'
         with:
-          token: ${{ secrets.NPM_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: https://npm.pkg.github.com
+          access: restricted
 
       - name: Update Changelog
         run: npm run changelog
         if: steps.check.outputs.changed == 'true'
         
-      - name: get-npm-version
-        if: steps.check.outputs.changed == 'true'
-        id: package-version
-        uses: martinbeentjes/npm-get-version-action@master
+      # - name: get-npm-version
+      #   if: steps.check.outputs.changed == 'true'
+      #   id: package-version
+      #   uses: martinbeentjes/npm-get-version-action@master
 
-      - name: Deploy Version  🚀
-        if: steps.check.outputs.changed == 'true'
-        uses: JamesIves/github-pages-deploy-action@v4.2.2
-        with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: ./demo/dist # The folder the action should deploy.
-          target-folder: version/${{steps.package-version.outputs.current-version}}
-      - name: Deploy Main App  🚀
-        if: steps.check.outputs.changed == 'true'
-        uses: JamesIves/github-pages-deploy-action@v4.2.2
-        with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: ./demo/dist # The folder the action should deploy.
-          clean: true # Automatically remove deleted files from the deploy branch
-          clean-exclude: version
+      # - name: Deploy Version  🚀
+      #   if: steps.check.outputs.changed == 'true'
+      #   uses: JamesIves/github-pages-deploy-action@v4.2.2
+      #   with:
+      #     branch: gh-pages # The branch the action should deploy to.
+      #     folder: ./demo/dist # The folder the action should deploy.
+      #     target-folder: version/${{steps.package-version.outputs.current-version}}
+      # - name: Deploy Main App  🚀
+      #   if: steps.check.outputs.changed == 'true'
+      #   uses: JamesIves/github-pages-deploy-action@v4.2.2
+      #   with:
+      #     branch: gh-pages # The branch the action should deploy to.
+      #     folder: ./demo/dist # The folder the action should deploy.
+      #     clean: true # Automatically remove deleted files from the deploy branch
+      #     clean-exclude: version
 

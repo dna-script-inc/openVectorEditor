@@ -1,27 +1,4 @@
 {
-  "name": "open-vector-editor",
-  "version": "18.2.10",
-  "description": "Teselagen's Open Source Vector Editor",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "files": [
-    "css",
-    "es",
-    "lib",
-    "umd"
-  ],
-  "scripts": {
-    "build": "nwb build-react-component --copy-files --no-demo",
-    "buildWithDemo": "nwb build-react-component --copy-files",
-    "build-watch": "nodemon  --watch src --exec \"rm .babelrc; yarn build\" ",
-    "clean": "nwb clean-module && npm clean-demo",
-    "start": "nwb serve-react-demo --port 3344",
-    "localj5": "AMQP=localhost:5672 REMOTE_J5=http://localhost:10000 nwb serve-react-demo --port 3344",
-    "c": "yarn cypress open --e2e --browser chrome",
-    "test-e2e": "yarn cypress run --record --key 373658d4-4931-4ffd-9263-8eb78a838ab9",
-    "changelog": "auto-changelog -p && git add CHANGELOG.md",
-    "prepare": "husky install"
-  },
   "dependencies": {
     "@blueprintjs/core": "3.52.0",
     "@blueprintjs/datetime": "3.23.19",
@@ -70,13 +47,7 @@
     "ve-range-utils": "^2.6.6",
     "ve-sequence-utils": "^5.2.9"
   },
-  "peerDependencies": {
-    "react": "^16.10.2",
-    "react-dom": "^16.9.0"
-  },
-  "optionalDependencies": {
-    "cypress": "12.1.0"
-  },
+  "description": "Teselagen's Open Source Vector Editor",
   "devDependencies": {
     "@cypress/code-coverage": "^3.10.0",
     "auto-changelog": "^2.4.0",
@@ -97,21 +68,13 @@
     "react-markdown": "4.0.6",
     "to-regex-range": "^5.0.1"
   },
-  "resolutions": {
-    "listr": "0.14.3"
-  },
-  "lint-staged": {
-    "addons/**/*.js|src/**/*.js|demo/**/*.js|cypress/**/*.js|nwb.config.js": [
-      "eslint --rule 'no-ignore: 0' --rule 'react/jsx-curly-brace-presence: 1' --fix --max-warnings=0",
-      "prettier --write"
-    ],
-    "**/*.css": [
-      "prettier --write"
-    ]
-  },
-  "license": "MIT",
-  "repository": "https://github.com/TeselaGen/openVectorEditor",
-  "homepage": "https://github.com/TeselaGen/openVectorEditor",
+  "files": [
+    "css",
+    "es",
+    "lib",
+    "umd"
+  ],
+  "homepage": "https://github.com/dna-script-inc/openVectorEditor",
   "keywords": [
     "react-component",
     "plasmid",
@@ -125,5 +88,47 @@
     "pairwise",
     "pairwise-alignment",
     "teselagen"
-  ]
+  ],
+  "license": "MIT",
+  "lint-staged": {
+    "**/*.css": [
+      "prettier --write"
+    ],
+    "addons/**/*.js|src/**/*.js|demo/**/*.js|cypress/**/*.js|nwb.config.js": [
+      "eslint --rule 'no-ignore: 0' --rule 'react/jsx-curly-brace-presence: 1' --fix --max-warnings=0",
+      "prettier --write"
+    ]
+  },
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "name": "@dna-script-inc/open-vector-editor",
+  "optionalDependencies": {
+    "cypress": "12.1.0"
+  },
+  "peerDependencies": {
+    "react": "^16.10.2",
+    "react-dom": "^16.9.0"
+  },
+  "private": true,
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": "https://github.com/dna-script-inc/openVectorEditor",
+  "resolutions": {
+    "listr": "0.14.3"
+  },
+  "scripts": {
+    "build": "nwb build-react-component --copy-files --no-demo",
+    "build-watch": "nodemon  --watch src --exec \"rm .babelrc; yarn build\" ",
+    "buildWithDemo": "nwb build-react-component --copy-files",
+    "c": "yarn cypress open --e2e --browser chrome",
+    "changelog": "auto-changelog -p && git add CHANGELOG.md",
+    "clean": "nwb clean-module && npm clean-demo",
+    "localj5": "AMQP=localhost:5672 REMOTE_J5=http://localhost:10000 nwb serve-react-demo --port 3344",
+    "prepare": "husky install",
+    "start": "nwb serve-react-demo --port 3344",
+    "test-e2e": "yarn cypress run --record --key 373658d4-4931-4ffd-9263-8eb78a838ab9"
+  },
+  "version": "18.2.11"
 }
