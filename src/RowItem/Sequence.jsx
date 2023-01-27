@@ -3,7 +3,10 @@ import { times, map } from "lodash";
 import { view } from "@risingstack/react-easy-state";
 import { getVisibleStartEnd } from "../utils/getVisibleStartEnd";
 import { fudge2, realCharWidth } from "./constants";
-import dnaToColor, { getDnaColor } from "../constants/dnaToColor";
+import dnaToColor, {
+  getDnaColor,
+  getOptimizedColor
+} from "../constants/dnaToColor";
 import { hoveredAnnEasyStore } from "../helperComponents/withHover";
 import { getOverlapsOfPotentiallyCircularRanges } from "ve-range-utils";
 import { partOverhangs } from "./partOverhangs";
@@ -17,6 +20,7 @@ class Sequence extends React.Component {
     const {
       isReplacementLayer,
       sequence,
+      originalSequence,
       hideBps,
       charWidth,
       containerStyle = {},
@@ -177,6 +181,15 @@ class Sequence extends React.Component {
                 }}
               />
             )}
+            {originalSequence && (
+              <OptimizedSequence
+                {...{
+                  ...this.props,
+                  fudge,
+                  totalWidth: width
+                }}
+              />
+            )}
             {inner}
           </svg>
         )}
@@ -224,6 +237,68 @@ class ColoredSequence extends React.Component {
     sequence.split("").forEach((char, i) => {
       const width = Number(charWidth);
       const color = getDnaColor(char, isReverse);
+      const x = (i + gapsBefore) * charWidth;
+      const y = 0;
+      colorPaths[color] =
+        (colorPaths[color] || "") +
+        `M${x},${y} L${x + width},${y} L${x + width},${y + height} L${x},${
+          y + height
+        }`;
+    });
+    const scalex = (totalWidth - fudge) / totalWidth;
+
+    return (
+      <g
+        style={{
+          transform: `scaleX(${scalex})`
+        }}
+      >
+        {map(colorPaths, (d, color) => {
+          return <path transform="tran" key={color} d={d} fill={color} />;
+        })}
+      </g>
+    );
+  };
+  render() {
+    return this.drawRects();
+  }
+}
+
+class OptimizedSequence extends React.Component {
+  shouldComponentUpdate(newProps) {
+    const { props } = this;
+    if (
+      ["charWidth", "sequence", "height", "isReverse", "width"].some(
+        (key) => props[key] !== newProps[key]
+      )
+    )
+      return true;
+    if (!!props.alignmentData !== !!newProps.alignmentData) return true;
+    return false;
+  }
+  drawRects = () => {
+    let {
+      charWidth,
+      originalSequence,
+      sequence,
+      height,
+      alignmentData,
+      getGaps,
+      fudge,
+      totalWidth
+    } = this.props;
+    if (alignmentData) {
+      sequence = sequence.replace(/^-+/g, "").replace(/-+$/g, "");
+    }
+    //we use big paths instead of many individual rects to improve performance
+    const colorPaths = Object.values(dnaToColor).reduce((acc, color) => {
+      acc[color] = "";
+      return acc;
+    }, {});
+    const gapsBefore = getGaps ? getGaps({ start: 0, end: 0 }).gapsBefore : 0;
+    sequence.split("").forEach((char, i) => {
+      const width = Number(charWidth);
+      const color = getOptimizedColor(originalSequence?.[i] ?? "", char);
       const x = (i + gapsBefore) * charWidth;
       const y = 0;
       colorPaths[color] =

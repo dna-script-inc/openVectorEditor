@@ -137,7 +137,7 @@ export default function RowItem(props) {
     sequence: showSequence
   } = annotationVisibility;
 
-  const { sequence = "", cutsites = [] } = row;
+  const { sequence = "", cutsites = [], optimizedSequence = "" } = row;
 
   const reverseSequence = getComplementSequenceString(
     (alignmentData && alignmentData.sequence) || sequence
@@ -440,7 +440,32 @@ export default function RowItem(props) {
             </Sequence>
           )}
           {emptyText}
-
+          {optimizedSequence && (
+            <Sequence
+              sequenceLength={sequenceLength}
+              fivePrimeThreePrimeHints={false}
+              cutsites={cutsites} //pass this in order to get children cutsites to re-render
+              showDnaColors={showDnaColors}
+              hideBps={charWidth < 7}
+              length={reverseSequence.length}
+              showCutsites={showCutsites}
+              rowStart={row.start}
+              rowEnd={row.end}
+              originalSequence={row.sequence}
+              sequence={optimizedSequence}
+              height={sequenceHeight}
+              charWidth={charWidth}
+            >
+              {showCutsites && Object.keys(cutsites).length > 0 && (
+                <Cutsites
+                  topStrand={false}
+                  annotationRanges={cutsites}
+                  {...annotationCommonProps}
+                />
+              )}
+              {deletionLayerStrikeThrough}
+            </Sequence>
+          )}
           {showReverseSequence && (
             <Sequence
               sequenceLength={sequenceLength}

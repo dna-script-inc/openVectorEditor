@@ -57,6 +57,10 @@ export default function prepareRowData(sequenceData, bpsPerRow) {
           length: row.end + 1 - row.start
         }
       : sequenceData.sequence.slice(row.start, row.end + 1);
+    row.optimizedSequence = (sequenceData?.optimizedSequence ?? "").slice(
+      row.start,
+      row.end + 1
+    );
 
     rows[rowNumber] = row;
   }
