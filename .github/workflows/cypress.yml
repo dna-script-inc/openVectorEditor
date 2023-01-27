@@ -1,5 +1,5 @@
 name: Cypress tests
-on: [push, pull_request]
+on: []
 jobs:
   cypress-run:
     name: Cypress run

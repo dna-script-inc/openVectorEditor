@@ -876,7 +876,7 @@ export function CircularView(props) {
                         fontSize: nameFontSizeCircularView
                       }}
                     >
-                      {sequenceName}
+                      {`${sequenceName}-toto`}
                     </div>
                     <span title={bpTitle} style={{ fontSize: 10 }}>
                       {bpTitle}

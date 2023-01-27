@@ -3,12 +3,12 @@ import { Provider } from "react-redux";
 import makeStore from "./makeStore";
 import { render, unmountComponentAtNode } from "react-dom";
 
-import Editor from "../Editor";
+import Editor from "../Editor/index.jsx";
 import updateEditor from "../updateEditor";
 import addAlignment from "../addAlignment";
-import AlignmentView from "../AlignmentView";
+import AlignmentView from "../AlignmentView/index.jsx";
 import sizeMe from "react-sizeme";
-import VersionHistoryView from "../VersionHistoryView";
+import VersionHistoryView from "../VersionHistoryView/index.jsx";
 
 let store;
 

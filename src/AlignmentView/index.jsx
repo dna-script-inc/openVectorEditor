@@ -1,4 +1,4 @@
-import { HorizontalPanelDragHandle } from "./HorizontalPanelDragHandle";
+import { HorizontalPanelDragHandle } from "./HorizontalPanelDragHandle.jsx";
 import {
   DragDropContext,
   Droppable,
@@ -40,10 +40,10 @@ import { getSequenceDataBetweenRange } from "ve-sequence-utils";
 import ReactList from "@teselagen/react-list";
 import ReactDOM from "react-dom";
 
-import { NonReduxEnhancedLinearView } from "../LinearView";
-import Minimap, { getTrimmedRangesToDisplay } from "./Minimap";
+import { NonReduxEnhancedLinearView } from "../LinearView/index.jsx";
+import Minimap, { getTrimmedRangesToDisplay } from "./Minimap.jsx";
 import { compose, branch, renderComponent } from "recompose";
-import AlignmentVisibilityTool from "./AlignmentVisibilityTool";
+import AlignmentVisibilityTool from "./AlignmentVisibilityTool.jsx";
 import * as alignmentActions from "../redux/alignments";
 import estimateRowHeight from "../RowView/estimateRowHeight";
 import prepareRowData from "../utils/prepareRowData";
@@ -60,28 +60,28 @@ import {
 import { ResizeSensor } from "@blueprintjs/core";
 import ReactDraggable from "react-draggable";
 import draggableClassnames from "../constants/draggableClassnames";
-import Caret from "../RowItem/Caret";
+import Caret from "../RowItem/Caret/index.jsx";
 import { debounce } from "lodash";
 import { view } from "@risingstack/react-easy-state";
 import { noop } from "lodash";
 import { massageTickSpacing } from "../utils/massageTickSpacing";
-import { getClientX, getClientY } from "../utils/editorUtils";
+import { getClientX, getClientY } from "../utils/editorUtils.jsx";
 
-import UncontrolledSliderWithPlusMinusBtns from "../helperComponents/UncontrolledSliderWithPlusMinusBtns";
+import UncontrolledSliderWithPlusMinusBtns from "../helperComponents/UncontrolledSliderWithPlusMinusBtns.jsx";
 import { updateLabelsForInViewFeatures } from "../utils/updateLabelsForInViewFeatures";
 
-import PinchHelper from "../helperComponents/PinchHelper/PinchHelper";
+import PinchHelper from "../helperComponents/PinchHelper/PinchHelper.jsx";
 import { showDialog } from "../GlobalDialogUtils";
-import { GlobalDialog } from "../GlobalDialog";
+import { GlobalDialog } from "../GlobalDialog.jsx";
 import { array_move } from "../ToolBar/array_move";
 import classNames from "classnames";
 import { getTrackFromEvent } from "./getTrackFromEvent";
-import { PerformantSelectionLayer } from "./PerformantSelectionLayer";
-import { PairwiseAlignmentView } from "./PairwiseAlignmentView";
+import { PerformantSelectionLayer } from "./PerformantSelectionLayer.jsx";
+import { PairwiseAlignmentView } from "./PairwiseAlignmentView.jsx";
 import { updateTrackHelper } from "./updateTrackHelper";
 // import { getGaps } from "./getGaps";
 import { isTargetWithinEl } from "./isTargetWithinEl";
-import { EditTrackNameDialog } from "./EditTrackNameDialog";
+import { EditTrackNameDialog } from "./EditTrackNameDialog.jsx";
 import { coerceInitialValue } from "./coerceInitialValue";
 
 let charWidthInLinearViewDefault = 12;
@@ -99,6 +99,7 @@ try {
 
 export class AlignmentView extends React.Component {
   bindOutsideChangeHelper = {};
+
   constructor(props) {
     super(props);
     window.scrollAlignmentToPercent = this.scrollAlignmentToPercent;

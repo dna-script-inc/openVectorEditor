@@ -2,9 +2,9 @@ import "@fontsource/ubuntu-mono";
 import "./addOnGlobals";
 import { FocusStyleManager } from "@blueprintjs/core";
 import { showContextMenu } from "teselagen-react-components";
-import "./createVectorEditor";
+import "./createVectorEditor/index.jsx";
 import "./style.css";
-export { getUserGroupLabel } from "./CutsiteFilter/AdditionalCutsiteInfoDialog";
+export { getUserGroupLabel } from "./CutsiteFilter/AdditionalCutsiteInfoDialog.jsx";
 
 window.tgCreateMenu = showContextMenu;
 // window.tgCreateMenu = (menu, e, e2) => {
@@ -14,37 +14,37 @@ window.tgCreateMenu = showContextMenu;
 
 FocusStyleManager.onlyShowFocusOnTabs();
 export { getGaps } from "./AlignmentView/getGaps";
-export { default as createVectorEditor } from "./createVectorEditor";
+export { default as createVectorEditor } from "./createVectorEditor/index.jsx";
 export { default as withEditorProps, connectToEditor } from "./withEditorProps";
-export { default as withEditorInteractions } from "./withEditorInteractions";
+export { default as withEditorInteractions } from "./withEditorInteractions/index.jsx";
 export { default as specialCutsiteFilterOptions } from "./constants/specialCutsiteFilterOptions";
 //export components
 export {
   default as CircularView,
   CircularView as CircularViewUnconnected
-} from "./CircularView";
-export { default as SimpleCircularOrLinearView } from "./SimpleCircularOrLinearView";
-export { default as RowView, RowView as RowViewUnconnected } from "./RowView";
-export { default as RowItem } from "./RowItem";
-export { default as Editor, Editor as EditorUnconnected } from "./Editor";
-export { ToolBar } from "./ToolBar";
+} from "./CircularView/index.jsx";
+export { default as SimpleCircularOrLinearView } from "./SimpleCircularOrLinearView.jsx";
+export { default as RowView, RowView as RowViewUnconnected } from "./RowView/index.jsx";
+export { default as RowItem } from "./RowItem/index.jsx";
+export { default as Editor, Editor as EditorUnconnected } from "./Editor/index.jsx";
+export { ToolBar } from "./ToolBar/index.jsx";
 export {
   default as CutsiteFilter,
   CutsiteFilter as CutsiteFilterUnconnected
-} from "./CutsiteFilter";
+} from "./CutsiteFilter/index.jsx";
 export {
   default as LinearView,
   LinearView as LinearViewUnconnected
-} from "./LinearView";
+} from "./LinearView/index.jsx";
 export {
   default as StatusBar,
   StatusBar as StatusBarUnconnected
-} from "./StatusBar";
+} from "./StatusBar/index.jsx";
 export {
   default as DigestTool,
   DigestTool as DigestToolUnconnected
-} from "./DigestTool/DigestTool";
-export { default as withHover } from "./helperComponents/withHover";
+} from "./DigestTool/DigestTool.jsx";
+export { default as withHover } from "./helperComponents/withHover.jsx";
 
 export {
   default as vectorEditorReducer,
@@ -56,6 +56,6 @@ export { default as addAlignment } from "./addAlignment";
 
 export { default as getRangeAnglesSpecial } from "./CircularView/getRangeAnglesSpecial";
 export { default as PositionAnnotationOnCircle } from "./CircularView/PositionAnnotationOnCircle";
-export { default as EnzymeViewer } from "./EnzymeViewer";
-export { default as AlignmentView } from "./AlignmentView";
+export { default as EnzymeViewer } from "./EnzymeViewer/index.jsx";
+export { default as AlignmentView } from "./AlignmentView/index.jsx";
 export { default as getOveHotkeyDefs } from "./commands/getOveHotkeyDefs";

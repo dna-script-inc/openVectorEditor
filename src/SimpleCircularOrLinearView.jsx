@@ -5,14 +5,14 @@ import {
   FillWindow
 } from "teselagen-react-components";
 
-import { CircularView } from "./CircularView";
-import { LinearView } from "./LinearView";
-import { RowView } from "./RowView";
+import { CircularView } from "./CircularView/index.jsx";
+import { LinearView } from "./LinearView/index.jsx";
+import { RowView } from "./RowView/index.jsx";
 
-import { HoveredIdContext } from "./helperComponents/withHover";
+import { HoveredIdContext } from "./helperComponents/withHover.jsx";
 import { visibilityDefaultValues } from "./redux/annotationVisibility";
 import { addWrappedAddons } from "./utils/addWrappedAddons";
-import { SimpleOligoPreview } from "./SimpleOligoPreview";
+import { SimpleOligoPreview } from "./SimpleOligoPreview.jsx";
 import { cloneDeep, flatMap, map, startCase } from "lodash";
 import {
   Button,
@@ -22,7 +22,7 @@ import {
   Popover,
   Tooltip
 } from "@blueprintjs/core";
-import getCommands from "./commands";
+import getCommands from "./commands/index.jsx";
 import { withHandlers } from "recompose";
 import { exportSequenceToFile } from "./withEditorProps";
 

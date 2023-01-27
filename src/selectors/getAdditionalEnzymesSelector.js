@@ -1,7 +1,7 @@
 import { pickBy } from "lodash";
 import { createSelector } from "reselect";
 import { getLowerCaseObj } from "../utils/arrayUtils";
-import { getCustomEnzymes } from "../utils/editorUtils";
+import { getCustomEnzymes } from "../utils/editorUtils.jsx";
 
 export default createSelector(
   () => window.localStorage.getItem("customEnzymes"),

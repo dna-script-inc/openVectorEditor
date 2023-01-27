@@ -2,7 +2,7 @@ import { createSelector } from "reselect";
 import { omitBy } from "lodash";
 import featuresSelector from "./featuresSelector";
 import sequenceLengthSelector from "./sequenceLengthSelector";
-import { hideAnnByLengthFilter } from "../utils/editorUtils";
+import { hideAnnByLengthFilter } from "../utils/editorUtils.jsx";
 
 function filteredFeaturesSelector(
   features,

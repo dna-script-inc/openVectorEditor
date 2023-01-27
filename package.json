@@ -39,18 +39,20 @@
     "redux-thunk": "2.4.1",
     "reselect": "^4.1.7",
     "shortid": "^2.2.16",
+    "stream-browserify": "^3.0.0",
     "teselagen-react-components": "30.13.21",
     "tg-use-local-storage-state": "^16.0.1",
     "use-debounce": "^8.0.4",
     "use-local-storage-state": "^13.0.0",
     "validate.io-nonnegative-integer-array": "^1.0.1",
     "ve-range-utils": "^2.6.6",
-    "ve-sequence-utils": "^5.2.9"
+    "ve-sequence-utils": "^5.2.9",
+    "vite": "^4.0.4"
   },
   "description": "Teselagen's Open Source Vector Editor",
   "devDependencies": {
+    "@babel/preset-react": "^7.18.6",
     "@cypress/code-coverage": "^3.10.0",
-    "auto-changelog": "^2.4.0",
     "babel-plugin-istanbul": "^6.1.1",
     "copy-to-clipboard": "^3.3.3",
     "eslint": "^8.32.0",
@@ -118,16 +120,12 @@
     "listr": "0.14.3"
   },
   "scripts": {
-    "build": "nwb build-react-component --copy-files --no-demo",
-    "build-watch": "nodemon  --watch src --exec \"rm .babelrc; yarn build\" ",
-    "buildWithDemo": "nwb build-react-component --copy-files",
+    "build": "vite build",
     "c": "yarn cypress open --e2e --browser chrome",
-    "changelog": "auto-changelog -p && git add CHANGELOG.md",
-    "clean": "nwb clean-module && npm clean-demo",
-    "localj5": "AMQP=localhost:5672 REMOTE_J5=http://localhost:10000 nwb serve-react-demo --port 3344",
+    "localj5": "AMQP=localhost:5672 REMOTE_J5=http://localhost:10000 vite",
     "prepare": "husky install",
-    "start": "nwb serve-react-demo --port 3344",
+    "start": "vite",
     "test-e2e": "yarn cypress run --record --key 373658d4-4931-4ffd-9263-8eb78a838ab9"
   },
-  "version": "18.2.13"
+  "version": "18.2.14"
 }

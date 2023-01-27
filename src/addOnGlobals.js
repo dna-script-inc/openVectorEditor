@@ -9,7 +9,7 @@ import {
   withSelectTableRecords
 } from "teselagen-react-components";
 import { hideDialog } from "./GlobalDialogUtils";
-import { typeField } from "./helperComponents/PropertiesDialog/typeField";
+import { typeField } from "./helperComponents/PropertiesDialog/typeField.jsx";
 
 import {
   FileUploadField,

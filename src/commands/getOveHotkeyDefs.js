@@ -1,4 +1,4 @@
-import getCommands from "./index";
+import getCommands from "./index.jsx";
 import { getCommandHotkeys } from "teselagen-react-components";
 
 export default function getOveHotkeyDefs({ store, editorName }) {

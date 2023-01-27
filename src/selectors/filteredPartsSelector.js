@@ -4,7 +4,7 @@ import tagsToBoldSelector from "./tagsToBoldSelector";
 import { some, keyBy, omitBy } from "lodash";
 import { map } from "lodash";
 import sequenceLengthSelector from "./sequenceLengthSelector";
-import { hideAnnByLengthFilter } from "../utils/editorUtils";
+import { hideAnnByLengthFilter } from "../utils/editorUtils.jsx";
 import { addWrappedAddons } from "../utils/addWrappedAddons";
 
 function filteredPartsSelector(

@@ -12,7 +12,7 @@ import {
 } from "@blueprintjs/core";
 import PropTypes from "prop-types";
 
-import VersionHistoryView from "../VersionHistoryView";
+import VersionHistoryView from "../VersionHistoryView/index.jsx";
 import { importSequenceFromFile } from "../withEditorProps";
 import getAdditionalEnzymesSelector from "../selectors/getAdditionalEnzymesSelector";
 import { showAddOrEditAnnotationDialog } from "../GlobalDialogUtils";
@@ -20,7 +20,7 @@ import { showAddOrEditAnnotationDialog } from "../GlobalDialogUtils";
 import "../Reflex/reflex-styles.css";
 
 import React from "react";
-import AlignmentView from "../AlignmentView";
+import AlignmentView from "../AlignmentView/index.jsx";
 // import * as customIcons from "teselagen-react-components";
 // import { Button } from "@blueprintjs/core";
 import { compose } from "redux";
@@ -36,24 +36,24 @@ import { ReflexContainer, ReflexSplitter, ReflexElement } from "../Reflex";
 
 import { flatMap, map, filter, pick, camelCase } from "lodash";
 
-import { ToolBar } from "../ToolBar";
-import CircularView from "../CircularView";
-import LinearView from "../LinearView";
-import RowView from "../RowView";
-import StatusBar from "../StatusBar";
-import DropHandler from "./DropHandler";
-import Properties from "../helperComponents/PropertiesDialog";
+import { ToolBar } from "../ToolBar/index.jsx";
+import CircularView from "../CircularView/index.jsx";
+import LinearView from "../LinearView/index.jsx";
+import RowView from "../RowView/index.jsx";
+import StatusBar from "../StatusBar/index.jsx";
+import DropHandler from "./DropHandler.jsx";
+import Properties from "../helperComponents/PropertiesDialog/index.jsx";
 import "./style.css";
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
-import DigestTool from "../DigestTool/DigestTool";
+import DigestTool from "../DigestTool/DigestTool.jsx";
 import { insertItem, removeItem } from "../utils/arrayUtils";
-import Mismatches from "../AlignmentView/Mismatches";
-import SimpleCircularOrLinearView from "../SimpleCircularOrLinearView";
+import Mismatches from "../AlignmentView/Mismatches.jsx";
+import SimpleCircularOrLinearView from "../SimpleCircularOrLinearView.jsx";
 import { userDefinedHandlersAndOpts } from "./userDefinedHandlersAndOpts";
-import { GlobalDialog } from "../GlobalDialog";
+import { GlobalDialog } from "../GlobalDialog.jsx";
 import isMobile from "is-mobile";
-import { getClientX, getClientY } from "../utils/editorUtils";
-import PCRTool from "../PCRTool/PCRTool";
+import { getClientX, getClientY } from "../utils/editorUtils.jsx";
+import PCRTool from "../PCRTool/PCRTool.jsx";
 
 // if (process.env.NODE_ENV !== 'production') {
 //   const {whyDidYouUpdate} = require('why-did-you-update');

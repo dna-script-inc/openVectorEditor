@@ -26,10 +26,10 @@ import {
 } from "teselagen-react-components";
 import { jsonToGenbank } from "bio-parsers";
 import withEditorProps from "../withEditorProps";
-import getCommands from "../commands";
+import getCommands from "../commands/index.jsx";
 import moveCaret from "./moveCaret";
-import createSequenceInputPopup from "./createSequenceInputPopup";
-import Keyboard from "./Keyboard";
+import createSequenceInputPopup from "./createSequenceInputPopup.jsx";
+import Keyboard from "./Keyboard.jsx";
 import {
   handleCaretMoved,
   editorDragged,
@@ -43,12 +43,12 @@ import {
   copyOptionsMenu,
   createNewAnnotationMenu
 } from "../MenuBar/defaultConfig";
-import { fullSequenceTranslationMenu } from "../MenuBar/viewSubmenu";
+import { fullSequenceTranslationMenu } from "../MenuBar/viewSubmenu.jsx";
 import {
   getAcceptedChars,
   getNodeToRefocus,
   getSelFromWrappedAddon
-} from "../utils/editorUtils";
+} from "../utils/editorUtils.jsx";
 
 import {
   showAddOrEditAnnotationDialog,

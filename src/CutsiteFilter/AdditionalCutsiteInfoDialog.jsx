@@ -13,12 +13,12 @@ import {
   map,
   sortBy
 } from "lodash";
-import SingleEnzymeCutsiteInfo from "../helperComponents/PropertiesDialog/SingleEnzymeCutsiteInfo";
+import SingleEnzymeCutsiteInfo from "../helperComponents/PropertiesDialog/SingleEnzymeCutsiteInfo.jsx";
 import { showDialog } from "../GlobalDialogUtils";
 
 import { aliasedEnzymesByName, defaultEnzymesByName } from "ve-sequence-utils";
 import { withRestrictionEnzymes } from "./withRestrictionEnzymes";
-import { getEnzymeAliases } from "../utils/editorUtils";
+import { getEnzymeAliases } from "../utils/editorUtils.jsx";
 
 function getUserEnzymeGroups(p) {
   return p.enzymeGroupsOverride || window.getExistingEnzymeGroups();

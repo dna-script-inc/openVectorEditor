@@ -6,8 +6,8 @@ import { normalizePositionByRangeLength, getRangeLength } from "ve-range-utils";
 import React from "react";
 import { DataTable } from "teselagen-react-components";
 import { getCutsiteType } from "ve-sequence-utils";
-import CutsiteFilter from "../CutsiteFilter";
-import Ladder from "./Ladder";
+import CutsiteFilter from "../CutsiteFilter/index.jsx";
+import Ladder from "./Ladder.jsx";
 // import getCutsiteType from "./getCutsiteType";
 import {
   Tabs,
@@ -17,7 +17,7 @@ import {
   Intent,
   Checkbox
 } from "@blueprintjs/core";
-import withEditorInteractions from "../withEditorInteractions";
+import withEditorInteractions from "../withEditorInteractions/index.jsx";
 import { userDefinedHandlersAndOpts } from "../Editor/userDefinedHandlersAndOpts";
 import { pick } from "lodash";
 

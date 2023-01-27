@@ -16,7 +16,7 @@ import {
   CutsiteTag,
   getCutsiteWithNumCuts,
   getUserGroupLabel
-} from "./AdditionalCutsiteInfoDialog";
+} from "./AdditionalCutsiteInfoDialog.jsx";
 import { withRestrictionEnzymes } from "./withRestrictionEnzymes";
 import { aliasedEnzymesByName, defaultEnzymesByName } from "ve-sequence-utils";
 
