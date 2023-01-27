@@ -1,5 +1,5 @@
 name: Publish and Deploy
-# only deploy site from master branch
+
 on:
   push:
     branches:
