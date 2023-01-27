@@ -130,5 +130,5 @@
     "start": "vite",
     "test-e2e": "yarn cypress run --record --key 373658d4-4931-4ffd-9263-8eb78a838ab9"
   },
-  "version": "18.2.14"
+  "version": "18.2.15"
 }
