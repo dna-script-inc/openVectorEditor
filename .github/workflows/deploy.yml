@@ -19,24 +19,24 @@ jobs:
         run: 'echo "Version change found! New version: ${{ steps.check.outputs.version }} (${{ steps.check.outputs.type }})"'
 
       - uses: bahmutov/npm-install@v1
-        with: 
+        with:
           install-command: yarn --ignore-optional
       - uses: bahmutov/npm-install@v1
         with:
           working-directory: addons/AutoAnnotate
-    
-      - run: npm run build
+
+      - run: yarn build
 
       - uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@dna-script-inc'
+          node-version: "16.x"
+          registry-url: "https://npm.pkg.github.com"
+          scope: "@dna-script-inc"
 
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
       # - uses: JS-DevTools/npm-publish@v1
       #   # if: steps.check.outputs.changed == 'true'
       #   with:
