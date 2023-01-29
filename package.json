@@ -47,7 +47,8 @@
     "validate.io-nonnegative-integer-array": "^1.0.1",
     "ve-range-utils": "^2.6.6",
     "ve-sequence-utils": "^5.2.9",
-    "vite": "^4.0.4"
+    "vite": "^4.0.4",
+    "vite-plugin-node-polyfills": "^0.7.0"
   },
   "description": "Teselagen's Open Source Vector Editor",
   "devDependencies": {

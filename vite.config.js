@@ -1,5 +1,7 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
+import { nodePolyfills } from 'vite-plugin-node-polyfills'
+
 
 export default defineConfig({
   build: {
@@ -10,9 +12,12 @@ export default defineConfig({
     },
     target: 'esnext',
     rollupOptions: {
-      external: ['react', 'react-dom', 'redux', 'react-redux']
+      external: ['react', 'react-dom', 'redux', 'react-redux'],
     }
   },
+  plugins: [
+    nodePolyfills({ protocolImports: true }),
+  ],
   resolve: {
     alias: {
       stream: 'stream-browserify',
