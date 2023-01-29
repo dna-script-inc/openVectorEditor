@@ -8,6 +8,10 @@ export default defineConfig({
       name: 'openVectorEditor',
       fileName: 'index',
     },
+    target: 'esnext',
+    rollupOptions: {
+      external: ['react', 'react-dom', 'redux', 'react-redux']
+    }
   },
   resolve: {
     alias: {
