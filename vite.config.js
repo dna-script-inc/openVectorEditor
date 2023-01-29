@@ -1,6 +1,7 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import { nodePolyfills } from 'vite-plugin-node-polyfills'
+import libCss from 'vite-plugin-libcss';
 
 
 export default defineConfig({
@@ -17,6 +18,7 @@ export default defineConfig({
   },
   plugins: [
     nodePolyfills({ protocolImports: true }),
+    libCss(),
   ],
   resolve: {
     alias: {

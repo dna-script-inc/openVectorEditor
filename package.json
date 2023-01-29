@@ -69,7 +69,8 @@
     "react-addons-perf": "^15.4.2",
     "react-dom": "^17.0.2",
     "react-markdown": "4.0.6",
-    "to-regex-range": "^5.0.1"
+    "to-regex-range": "^5.0.1",
+    "vite-plugin-libcss": "^1.0.5"
   },
   "exports": {
     ".": {
@@ -132,5 +133,5 @@
     "test-e2e": "yarn cypress run --record --key 373658d4-4931-4ffd-9263-8eb78a838ab9"
   },
   "type": "module",
-  "version": "18.2.17"
+  "version": "18.2.18"
 }
