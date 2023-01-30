@@ -224,8 +224,7 @@ class _LinearView extends React.Component {
           style={{
             width,
             ...(height && { height }),
-            paddingLeft: marginWidth / 2,
-            ...(paddingBottom && { paddingBottom })
+            padding: "10px"
           }}
           onContextMenu={(event) => {
             this.getNearestCursorPositionToMouseEvent(
