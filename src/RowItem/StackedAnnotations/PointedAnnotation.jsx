@@ -266,7 +266,7 @@ function PointedAnnotation(props) {
             <circle
               className="partWithOverhangsIndicator"
               style={{ fillOpacity: 1 }}
-              fill="#ac68cc"
+              fill="#000"
               cx={(forward ? -7 : 0) + 15}
               cy={7}
               r={4}
@@ -288,7 +288,7 @@ function PointedAnnotation(props) {
             <circle
               className="partWithOverhangsIndicator"
               style={{ fillOpacity: 1 }}
-              fill="#ac68cc"
+              fill="#000"
               cx={(forward ? -7 : 0) + width - 10}
               cy={7}
               r={4}
@@ -323,7 +323,7 @@ export default withHover(PointedAnnotation);
 //             >
 //               <rect
 //                 style={{ fillOpacity: 1 }}
-//                 stroke="#ac68cc"
+//                 stroke="#000"
 //                 fill="none"
 //                 x={-10}
 //                 width={10}
@@ -337,7 +337,7 @@ export default withHover(PointedAnnotation);
 //             >
 //               <rect
 //                 style={{ fillOpacity: 1 }}
-//                 stroke="#ac68cc"
+//                 stroke="#000"
 //                 fill="none"
 //                 x={ width + 2 }
 //                 y={7}

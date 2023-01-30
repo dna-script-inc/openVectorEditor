@@ -192,7 +192,7 @@
   overflow: visible;
 }
 .vePart {
-  fill-opacity: 0;
+  fill-opacity: 0.3;
 }
 
 .vePart text,

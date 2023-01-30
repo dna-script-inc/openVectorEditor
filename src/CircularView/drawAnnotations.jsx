@@ -242,7 +242,7 @@ function drawAnnotations(props) {
           fontStyle: fontStyle || "normal",
           color:
             annotation.labelColor ||
-            (annotationType === "part" ? "#ac68cc" : "black"),
+            (annotationType === "part" ? "#000" : "black"),
           onContextMenu,
           ...labelOptions
         };
@@ -250,7 +250,7 @@ function drawAnnotations(props) {
       if (!hideAnnotation) {
         const annotationColor = getColor
           ? getColor(annotation)
-          : annotation.color || "#ac68cc";
+          : annotation.color || "#000";
         DrawAnnotation.displayName = annotationType + "--- DrawAnnotation";
         const CompToUse = noHover ? DrawAnnotationInner : DrawAnnotation;
         svgGroup.push(

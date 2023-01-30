@@ -22,9 +22,7 @@ export function getInternalLabel({
         transform={
           (revTransform || "") + (angleAdjust ? ` rotate(${angleAdjust})` : "")
         }
-        fill={
-          isPart ? "#ac68cc" : Color(colorToUse).isDark() ? "white" : "black"
-        }
+        fill={isPart ? "#000" : Color(colorToUse).isDark() ? "white" : "black"}
         dy={-2}
       >
         <textPath

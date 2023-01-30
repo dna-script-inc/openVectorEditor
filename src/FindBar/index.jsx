@@ -387,7 +387,7 @@ function AnnotationSearchMatchComp({
                         style={{
                           background:
                             type === "parts"
-                              ? "#ac68cc"
+                              ? "#000"
                               : ann.color ||
                                 getFeatureToColorMap({ includeHidden: true })[
                                   ann.type

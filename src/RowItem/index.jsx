@@ -317,7 +317,7 @@ export default function RowItem(props) {
       const { color } = annotation;
       const colorToUse = startsWith(color, "override_")
         ? color.replace("override_", "")
-        : "#ac68cc";
+        : "#000";
 
       let extraProps = {};
       if (typeof extraAnnotationProps["part"] === "function") {

@@ -26,7 +26,7 @@ export default function Feature(props) {
   if (isPart) {
     colorToUse = startsWith(color, "override_")
       ? color.replace("override_", "")
-      : "#ac68cc";
+      : "#000";
   }
   const labelNeedsFlip = shouldFlipText(centerAngle + rotationRadians);
   if (containsLocations) {
@@ -48,16 +48,20 @@ export default function Feature(props) {
       />
     );
   }
+  const radiusToUse = isPart ? radius / 2 : radius;
+  const annotationHeightToUse = isPart ? radius : annotationHeight;
+  const arrowheadLengthToUse = isPart ? arrowheadLength / 3 : arrowheadLength;
+  const arrowheadTypeToUse = isPart ? "NONE" : arrowheadType;
   const [path, textPath] = drawDirectedPiePiece({
     returnTextPath: true,
     overlapsSelf,
-    arrowheadType,
+    arrowheadType: arrowheadTypeToUse,
     hasLabel: ellipsizedName,
     labelNeedsFlip,
-    radius,
-    annotationHeight,
+    radius: radiusToUse,
+    annotationHeight: annotationHeightToUse,
     totalAngle,
-    arrowheadLength,
+    arrowheadLength: arrowheadLengthToUse,
     tailThickness: 1 //feature specific
   });
 
@@ -66,8 +70,8 @@ export default function Feature(props) {
       <path
         className={className}
         strokeWidth=".5"
-        stroke={isPart ? colorToUse : "black"}
-        fill={isPart ? undefined : colorToUse}
+        stroke={isPart ? "black" : "black"}
+        fill={isPart ? "grey" : colorToUse}
         d={path.print()}
       />
       {getInternalLabel({ ...props, colorToUse, textPath, isPart })}
