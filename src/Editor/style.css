@@ -145,12 +145,12 @@
   fill: gray;
 }
 .veVectorInteractionWrapper:focus .veSelectionLayer:not(.veCaret) {
-  fill: #0099ff;
-  background: #0099ff;
+  fill: #ff5843;
+  background: #ff5843;
 }
 .tg-simple-dna-view .veSelectionLayer:not(.veCaret) {
-  fill: #0099ff;
-  background: #0099ff;
+  fill: #ff5843;
+  background: #ff5843;
 }
 
 .veVectorInteractionWrapper:focus .veCaret:not(.selectionLayerCaret) {

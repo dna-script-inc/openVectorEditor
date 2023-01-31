@@ -51,7 +51,7 @@ import { normalizeAngle } from "./normalizeAngle";
 // import { updateLabelsForInViewFeaturesCircView } from "../utils/updateLabelsForInViewFeaturesCircView";
 
 function noop() {}
-const BASE_RADIUS = 70;
+const BASE_RADIUS = 100;
 
 export function CircularView(props) {
   const [limits] = useAnnotationLimits();
@@ -215,7 +215,7 @@ export function CircularView(props) {
 
     rangeToShowLength = getRangeLength(rangeToShow, sequenceLength);
   }
-  const innerRadius = radius - 10;
+  const innerRadius = radius + 10;
   const initialRadius = radius;
   const showSeq = isZoomedIn && rangeToShowLength < 140;
   const showSeqText = rangeToShowLength < 80;
@@ -595,7 +595,7 @@ export function CircularView(props) {
                   : undefined,
                 sequenceLength,
                 baseRadius: BASE_RADIUS,
-                radius,
+                radius: radius - 5,
                 innerRadius
               }}
             />
@@ -624,7 +624,7 @@ export function CircularView(props) {
             sequenceLength,
             isProtein,
             innerRadius,
-            outerRadius: radius,
+            outerRadius: radius - 5,
             key: "veCircularViewCaret"
           }}
         />

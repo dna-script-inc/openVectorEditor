@@ -1,5 +1,5 @@
 .veRowViewCaret {
-  height: 102%;
+  height: calc(100% - 10px);
   /* background: black; */
   position: absolute;
   top: -5px;

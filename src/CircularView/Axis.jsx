@@ -18,16 +18,14 @@ function Axis({
   const component = (
     <g key="veAxis" className="veAxis">
       <circle
-        className="veAxisLine veAxisOuter"
-        key="circleOuter"
-        r={radiusToUse + ringThickness}
-        style={{ fill: "#ffffff00", stroke: "black", strokeWidth: 0.5 }}
-      />
-      <circle
         className="veAxisLine veAxisInner"
         key="circle"
-        r={radiusToUse}
-        style={{ fill: "#ffffff00", stroke: "black", strokeWidth: 0.5 }}
+        r={radiusToUse - 10}
+        style={{
+          fill: "none",
+          stroke: "rgba(115, 117, 142, 0.7)",
+          strokeWidth: 20
+        }}
       />
     </g>
   );

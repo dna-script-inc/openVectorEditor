@@ -1,16 +1,16 @@
 .veRowViewSelectionLayer {
-  height: 100%;
+  height: calc(100% - 10px);
   border: none;
-  background: #0099ff;
+  background: #ff5843;
   opacity: 0.3;
-  top: -2px;
+  top: -5px;
   position: absolute;
   z-index: 10;
 }
 
 .veCaret {
-  background: black;
-  stroke: black;
+  background: #ff5843;
+  stroke: #ff5843;
   opacity: 1;
   cursor: ew-resize;
   z-index: 10;

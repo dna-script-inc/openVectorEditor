@@ -32,7 +32,7 @@ export function ZoomCircularViewSlider({
     <div
       style={{
         position: "absolute",
-        left: smallSlider ? 100 : 150,
+        left: smallSlider ? 100 : 230,
         top: 0,
         zIndex: 900
       }}

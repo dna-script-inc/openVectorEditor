@@ -133,5 +133,5 @@
     "test-e2e": "yarn cypress run --record --key 373658d4-4931-4ffd-9263-8eb78a838ab9"
   },
   "type": "module",
-  "version": "18.2.21"
+  "version": "18.2.22"
 }
