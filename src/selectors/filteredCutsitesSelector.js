@@ -1,20 +1,30 @@
 import flatmap from "lodash/flatMap";
+import shortid from "shortid";
 import { createSelector } from "reselect";
 import cutsitesSelector from "./cutsitesSelector";
+import sequenceDataSelector from "./sequenceDataSelector";
 import filteredRestrictionEnzymesSelector from "./filteredRestrictionEnzymesSelector";
 import specialCutsiteFilterOptions from "../constants/specialCutsiteFilterOptions";
 import { flatMap } from "lodash";
 import isEnzymeFilterAndSelector from "./isEnzymeFilterAndSelector";
 
+const getCutSiteColorFromAction = (action) => {
+  const isAvoided = action === "avoid";
+  const color = isAvoided ? "#4BB667" : "blue";
+  return color;
+};
+
 export default createSelector(
   cutsitesSelector,
   filteredRestrictionEnzymesSelector,
   isEnzymeFilterAndSelector,
+  sequenceDataSelector,
   (state, addEnzs, enzymeGroupsOverride) => enzymeGroupsOverride,
   function (
     { cutsitesByName },
     filteredRestrictionEnzymes,
     isEnzymeFilterAnd,
+    sequenceData,
     enzymeGroupsOverride
   ) {
     const returnVal = {
@@ -111,6 +121,86 @@ export default createSelector(
     intersectionCutSites.forEach((value) => {
       cutsbyname_AND[value] = cutsitesByName[value];
     });
+
+    const userAddedRestrictions = new Set(
+      (sequenceData?.restrictions ?? []).map((r) => r.name)
+    );
+    const oveCutSites = new Set(
+      Object.values(returnVal.cutsitesByName).map((c) => c[0].name)
+    );
+    const userAddedRestrictionsNotInOveCutsites = [
+      ...userAddedRestrictions
+    ].filter((n) => !oveCutSites.has(n));
+
+    const oveCutSitesUsed = Object.fromEntries(
+      Object.entries(returnVal.cutsitesByName)
+        .filter(([_key, val]) => {
+          return userAddedRestrictions.has(val[0].name);
+        })
+        .map(([key, val]) => {
+          const restriction = (sequenceData?.restrictions ?? []).find(
+            (r) => r.name === val[0].name
+          );
+          if (!restriction) return [];
+          const newVal = val.map((v, i) => {
+            const siteAction = restriction.sites?.[i]?.action;
+            return {
+              ...v,
+              labelColor: getCutSiteColorFromAction(siteAction)
+            };
+          });
+          return [key, newVal];
+        })
+    );
+    const customDefinedCutSites = Object.fromEntries(
+      userAddedRestrictionsNotInOveCutsites.map((customRestrictionName) => {
+        const restriction = (sequenceData?.restrictions ?? []).find(
+          (r) => r.name === customRestrictionName
+        );
+        if (!restriction) return [];
+        const { name, sequence, sites } = restriction;
+        const lowerCaseSequence = sequence.toLowerCase();
+        const cutsites = sites.map((site) => {
+          const { start, end, action } = site;
+          return {
+            id: shortid(),
+            start,
+            end,
+            topSnipPosition: start,
+            bottomSnipPosition: end,
+            topSnipBeforeBottom: true,
+            overhangBps: "CT",
+            overhangSize: 0,
+            upstreamTopBeforeBottom: false,
+            upstreamTopSnip: null,
+            annotationTypePlural: "cutsites",
+            upstreamBottomSnip: null,
+            recognitionSiteRange: {
+              start: start,
+              end: end
+            },
+            forward: true,
+            name: name,
+            restrictionEnzyme: {
+              aliases: [name],
+              site: lowerCaseSequence,
+              forwardRegex: lowerCaseSequence,
+              reverseRegex: lowerCaseSequence,
+              topSnipOffset: 0,
+              bottomSnipOffset: 0,
+              name: name
+            },
+            numberOfCuts: sites.length,
+            annotationType: "cutsite",
+            labelColor: getCutSiteColorFromAction(action),
+            labelClassname: "singleCutter"
+          };
+        });
+        return [customRestrictionName.toLowerCase(), cutsites];
+      })
+    );
+
+    returnVal.cutsitesByName = { ...oveCutSitesUsed, ...customDefinedCutSites };
 
     returnVal.cutsiteTotalCount = Object.keys(returnVal.cutsitesByName).length;
 

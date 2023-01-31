@@ -53,6 +53,7 @@ export {
 } from "./redux";
 export { default as updateEditor } from "./updateEditor";
 export { default as addAlignment } from "./addAlignment";
+export { default as selectors } from "./selectors";
 
 export { default as getRangeAnglesSpecial } from "./CircularView/getRangeAnglesSpecial";
 export { default as PositionAnnotationOnCircle } from "./CircularView/PositionAnnotationOnCircle";
