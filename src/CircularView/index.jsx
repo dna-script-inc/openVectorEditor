@@ -215,7 +215,7 @@ export function CircularView(props) {
 
     rangeToShowLength = getRangeLength(rangeToShow, sequenceLength);
   }
-  const innerRadius = radius + 10;
+  const innerRadius = radius - 10;
   const initialRadius = radius;
   const showSeq = isZoomedIn && rangeToShowLength < 140;
   const showSeqText = rangeToShowLength < 80;
