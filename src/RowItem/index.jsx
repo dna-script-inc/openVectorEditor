@@ -34,6 +34,18 @@ function filterRanges(ranges, extraProps = {}) {
   if (extraProps.onlyReverse) {
     ranges = filter(ranges, (a) => !a.annotation.forward);
   }
+  ranges = ranges.map((r) => {
+    if (r.annotation.annotationTypePlural !== "parts") {
+      return r;
+    }
+    return {
+      ...r,
+      annotation: {
+        ...r.annotation,
+        arrowheadType: "NONE"
+      }
+    };
+  });
   return ranges;
 }
 function getPropsForType(props, type, pluralType, extraProps) {
