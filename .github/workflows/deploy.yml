@@ -36,10 +36,3 @@ jobs:
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # - uses: JS-DevTools/npm-publish@v1
-      #   # if: steps.check.outputs.changed == 'true'
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     registry: https://npm.pkg.github.com
-      #     access: restricted

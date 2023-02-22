@@ -26,6 +26,19 @@ import { CutsiteSelectionLayers } from "./CutsiteSelectionLayers";
 
 function noop() {}
 
+const removeArrowForBlocks = (range) => {
+  if (range.annotation.annotationTypePlural !== "parts") {
+    return range;
+  }
+  return {
+    ...range,
+    annotation: {
+      ...range.annotation,
+      arrowheadType: "NONE"
+    }
+  };
+};
+
 function filterRanges(ranges, extraProps = {}) {
   if (!ranges) return ranges;
   if (extraProps.onlyForward) {
@@ -34,20 +47,10 @@ function filterRanges(ranges, extraProps = {}) {
   if (extraProps.onlyReverse) {
     ranges = filter(ranges, (a) => !a.annotation.forward);
   }
-  ranges = ranges.map((r) => {
-    if (r.annotation.annotationTypePlural !== "parts") {
-      return r;
-    }
-    return {
-      ...r,
-      annotation: {
-        ...r.annotation,
-        arrowheadType: "NONE"
-      }
-    };
-  });
+  ranges = ranges.map(removeArrowForBlocks);
   return ranges;
 }
+
 function getPropsForType(props, type, pluralType, extraProps) {
   const upperPluralType = startCase(pluralType);
   const annotationRanges = filterRanges(props.row[pluralType], extraProps);
