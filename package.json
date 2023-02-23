@@ -47,7 +47,7 @@
     "validate.io-nonnegative-integer-array": "^1.0.1",
     "ve-range-utils": "^2.6.6",
     "ve-sequence-utils": "^5.2.9",
-    "vite": "^4.0.4",
+    "vite": "^4.1.4",
     "vite-plugin-node-polyfills": "^0.7.0"
   },
   "description": "Teselagen's Open Source Vector Editor",
@@ -133,5 +133,5 @@
     "test-e2e": "yarn cypress run --record --key 373658d4-4931-4ffd-9263-8eb78a838ab9"
   },
   "type": "module",
-  "version": "18.2.25"
+  "version": "18.2.26"
 }
