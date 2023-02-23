@@ -23,7 +23,7 @@ const makeStore = () => {
       form,
       VectorEditor: VectorEditor()
     }),
-    undefined,
+    null,
     composeEnhancer(
       applyMiddleware(thunk, vectorEditorMiddleware) //your store should be redux-thunk connected for the VectorEditor component to work
     )
