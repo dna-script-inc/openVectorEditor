@@ -14,16 +14,16 @@ export default function Feature(props) {
     annotationHeight,
     className,
     ellipsizedName,
-    annotationType,
     arrowheadType,
     overlapsSelf,
     rotationRadians,
     centerAngle,
-    totalAngle
+    totalAngle,
+    isBlockRegion
   } = props;
-  const isPart = annotationType === "part";
+
   let colorToUse = color;
-  if (isPart) {
+  if (isBlockRegion) {
     colorToUse = startsWith(color, "override_")
       ? color.replace("override_", "")
       : "#000";
@@ -48,10 +48,12 @@ export default function Feature(props) {
       />
     );
   }
-  const radiusToUse = isPart ? radius / 2 : radius;
-  const annotationHeightToUse = isPart ? radius : annotationHeight;
-  const arrowheadLengthToUse = isPart ? arrowheadLength / 3 : arrowheadLength;
-  const arrowheadTypeToUse = isPart ? "NONE" : arrowheadType;
+  const radiusToUse = isBlockRegion ? radius / 2 : radius;
+  const annotationHeightToUse = isBlockRegion ? radius : annotationHeight;
+  const arrowheadLengthToUse = isBlockRegion
+    ? arrowheadLength / 3
+    : arrowheadLength;
+  const arrowheadTypeToUse = isBlockRegion ? "NONE" : arrowheadType;
   const [path, textPath] = drawDirectedPiePiece({
     returnTextPath: true,
     overlapsSelf,
@@ -70,11 +72,16 @@ export default function Feature(props) {
       <path
         className={className}
         strokeWidth=".5"
-        stroke={isPart ? "black" : "black"}
-        fill={isPart ? "grey" : colorToUse}
+        stroke={"black"}
+        fill={isBlockRegion ? "grey" : colorToUse}
         d={path.print()}
       />
-      {getInternalLabel({ ...props, colorToUse, textPath, isPart })}
+      {getInternalLabel({
+        ...props,
+        colorToUse,
+        textPath,
+        isPart: isBlockRegion
+      })}
     </>
   );
 }
