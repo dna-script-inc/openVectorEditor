@@ -19,7 +19,8 @@ export default function Feature(props) {
     rotationRadians,
     centerAngle,
     totalAngle,
-    isBlockRegion
+    isBlockRegion,
+    isGenePart
   } = props;
 
   let colorToUse = color;
@@ -74,6 +75,7 @@ export default function Feature(props) {
         strokeWidth=".5"
         stroke={"black"}
         fill={isBlockRegion ? "grey" : colorToUse}
+        fillOpacity={isGenePart ? 1 : 0.3}
         d={path.print()}
       />
       {getInternalLabel({

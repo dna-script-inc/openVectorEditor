@@ -240,6 +240,7 @@ function PointedAnnotation(props) {
         stroke={stroke || "black"}
         opacity={opacity}
         fill={isStriped ? "url(#diagonalHatch)" : fill || color}
+        {...(annotation.isGenePart ? { fillOpacity: 1 } : {})}
         transform={
           forward
             ? null
