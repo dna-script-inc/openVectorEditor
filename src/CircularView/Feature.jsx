@@ -75,7 +75,7 @@ export default function Feature(props) {
         strokeWidth=".5"
         stroke={"black"}
         fill={isBlockRegion ? "grey" : colorToUse}
-        fillOpacity={isGenePart ? 1 : 0.3}
+        {...(isGenePart ? { fillOpacity: 1 } : {})}
         d={path.print()}
       />
       {getInternalLabel({
